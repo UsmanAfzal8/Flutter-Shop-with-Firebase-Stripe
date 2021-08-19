@@ -24,7 +24,7 @@ class _BottomBarState extends State<BottomBar> {
     Cartscreen(),
     Userscreen(),
   ];
-  int _selectedIndex = 4;
+  int _selectedIndex = 3;
   void _selectPage(int index) {
     setState(() {
       _selectedIndex = index;
@@ -42,11 +42,46 @@ class _BottomBarState extends State<BottomBar> {
         selectedIndex: _selectedIndex,
         onItemSelected: _selectPage,
         items: <BottomNavyBarItem>[
-          BottomNavyBarItem(title: Text('Home'), icon: Icon(MyIcon.home)),
-          BottomNavyBarItem(title: Text('Feed'), icon: Icon(MyIcon.Feed)),
-          BottomNavyBarItem(title: Text('Search'), icon: Icon(MyIcon.Search)),
-          BottomNavyBarItem(title: Text('Cart'), icon: Icon(MyIcon.Cart)),
-          BottomNavyBarItem(title: Text('User'), icon: Icon(MyIcon.User)),
+          BottomNavyBarItem(
+              title: Text(
+                'Home',
+                style: TextStyle(color: Colors.orange),
+              ),
+              icon: Icon(MyIcon.home),
+              activeColor: Colors.orange.withOpacity(0.3),
+              inactiveColor: Colors.black),
+          BottomNavyBarItem(
+              title: Text(
+                'Feed',
+                style: TextStyle(color: Colors.orange),
+              ),
+              icon: Icon(MyIcon.Feed),
+              activeColor: Colors.orange.withOpacity(0.3),
+              inactiveColor: Colors.black),
+          BottomNavyBarItem(
+              title: Text(
+                'Search',
+                style: TextStyle(color: Colors.orange),
+              ),
+              icon: Icon(MyIcon.Search),
+              activeColor: Colors.orange.withOpacity(0.3),
+              inactiveColor: Colors.black),
+          BottomNavyBarItem(
+              title: Text(
+                'Cart',
+                style: TextStyle(color: Colors.orange),
+              ),
+              icon: Icon(MyIcon.Cart),
+              activeColor: Colors.orange.withOpacity(0.3),
+              inactiveColor: Colors.black),
+          BottomNavyBarItem(
+              title: Text(
+                'User',
+                style: TextStyle(color: Colors.orange),
+              ),
+              icon: Icon(MyIcon.User),
+              activeColor: Colors.orange.withOpacity(0.3),
+              inactiveColor: Colors.black),
         ],
       ),
     );
