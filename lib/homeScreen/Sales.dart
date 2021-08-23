@@ -1,24 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:fluttershop/provider/product.dart';
+import 'package:provider/provider.dart';
 
 class SalesItem extends StatelessWidget {
-  List<Map<String, Object>> Items = [
-    {
-      'off': '50',
-      'Name': 'Samsung Watch',
-      'Image': 'assets/watch.png',
-      'oldPrice': '1000',
-      'CurrentPrice': '500',
-    },
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final productprovider = Provider.of<Products>(context);
+    List productlist = productprovider.products;
     return Container(
       height: 180,
       width: double.infinity,
       //color: Colors.black,
       child: ListView.builder(
-          itemCount: 10,
+          itemCount: productlist.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (BuildContext context, int Index) {
             return Padding(
@@ -51,7 +45,7 @@ class SalesItem extends StatelessWidget {
                             borderRadius: BorderRadius.circular(16),
                             border: Border.all(color: Colors.orange)),
                         child: Text(
-                          Items[0]['off'].toString() + '% OFF',
+                          productlist[Index].off.toString() + '% OFF',
                           textAlign: TextAlign.center,
                           style: TextStyle(color: Colors.orange),
                         ),
@@ -59,25 +53,25 @@ class SalesItem extends StatelessWidget {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsets.only(top: 5, left: 30, right: 20),
+                          const EdgeInsets.only(top: 5, left: 20, right: 20),
                       child: Container(
                         height: 70,
                         color: Colors.transparent,
                         child: Image(
-                          image: AssetImage(Items[0]['Image'].toString()),
+                          image: AssetImage(productlist[Index].ImageUrl),
                         ),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text('Samsung Watch'),
+                      child: Text(productlist[Index].name),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 8),
                       child: Row(
                         children: [
                           Text(
-                            '\$' + Items[0]['CurrentPrice'].toString(),
+                            '\$' + productlist[Index].newPrice.toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 17),
                           ),
@@ -85,7 +79,7 @@ class SalesItem extends StatelessWidget {
                             width: 10,
                           ),
                           Text(
-                            '\$' + Items[0]['oldPrice'].toString(),
+                            '\$' + productlist[Index].oldPrice.toString(),
                             style: TextStyle(
                               decoration: TextDecoration.lineThrough,
                             ),

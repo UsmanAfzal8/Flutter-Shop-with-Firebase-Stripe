@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttershop/FlashSaleTime/countdown_timer_page.dart';
 import 'package:fluttershop/homeScreen/topScreen.dart';
+import 'package:fluttershop/sales/salesdatabase.dart';
 
 import 'Categrous.dart';
 import 'Sales.dart';
@@ -20,7 +21,7 @@ class _HomeScreenwidgetState extends State<HomeScreenwidget> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
-        children: [
+        children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
@@ -40,10 +41,6 @@ class _HomeScreenwidgetState extends State<HomeScreenwidget> {
             ),
           ),
           Headeriamge(),
-          SizedBox(
-            height: 10,
-          ),
-          category(),
           SizedBox(
             height: 10,
           ),
@@ -80,6 +77,10 @@ class _HomeScreenwidgetState extends State<HomeScreenwidget> {
             ),
           ),
           SalesItem(),
+          SizedBox(
+            height: 10,
+          ),
+          category(),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -95,7 +96,9 @@ class _HomeScreenwidgetState extends State<HomeScreenwidget> {
                 Material(
                   child: InkWell(
                     // splashColor: Colors.red,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushNamed('/topviewedfeedScreen');
+                    },
                     child: Text(
                       'View All...',
                       style: TextStyle(

@@ -4,24 +4,26 @@ import 'package:fluttershop/provider/feedScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import 'feeddatabase.dart';
-
-class feedScreen extends StatefulWidget {
-  const feedScreen({Key? key}) : super(key: key);
+class CategoryfeedScreen extends StatefulWidget {
+  const CategoryfeedScreen({Key? key}) : super(key: key);
 
   @override
-  _feedScreenState createState() => _feedScreenState();
+  _CategoryfeedScreenState createState() => _CategoryfeedScreenState();
 }
 
-class _feedScreenState extends State<feedScreen> {
+class _CategoryfeedScreenState extends State<CategoryfeedScreen> {
   @override
   Widget build(BuildContext context) {
-    final feederprovider = Provider.of<feedProvider>(context);
-    List feederlist = feederprovider.FeedScreenprovider;
+    final feederprovider = Provider.of<feedProvider>(context, listen: false);
+    String categoryName = ModalRoute.of(context)!.settings.arguments as String;
+    List feederlist = feederprovider.findByCategory(categoryName);
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(
+          color: Colors.black,
+        ),
         title: Text(
-          'All Items',
+          categoryName,
           style: TextStyle(color: Colors.black),
         ),
         centerTitle: true,

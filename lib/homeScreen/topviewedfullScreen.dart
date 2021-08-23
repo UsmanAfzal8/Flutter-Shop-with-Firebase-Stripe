@@ -4,24 +4,25 @@ import 'package:fluttershop/provider/feedScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import 'feeddatabase.dart';
-
-class feedScreen extends StatefulWidget {
-  const feedScreen({Key? key}) : super(key: key);
+class topviewedfeedScreen extends StatefulWidget {
+  const topviewedfeedScreen({Key? key}) : super(key: key);
 
   @override
-  _feedScreenState createState() => _feedScreenState();
+  _topviewedfeedScreenState createState() => _topviewedfeedScreenState();
 }
 
-class _feedScreenState extends State<feedScreen> {
+class _topviewedfeedScreenState extends State<topviewedfeedScreen> {
   @override
   Widget build(BuildContext context) {
     final feederprovider = Provider.of<feedProvider>(context);
-    List feederlist = feederprovider.FeedScreenprovider;
+    List feederlist = feederprovider.TopViewed;
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(
+          color: Colors.black,
+        ),
         title: Text(
-          'All Items',
+          'Most Viewed ',
           style: TextStyle(color: Colors.black),
         ),
         centerTitle: true,

@@ -24,7 +24,7 @@ class _BottomBarState extends State<BottomBar> {
     Cartscreen(),
     Userscreen(),
   ];
-  int _selectedIndex = 3;
+  int _selectedIndex = 0;
   void _selectPage(int index) {
     setState(() {
       _selectedIndex = index;
@@ -52,7 +52,7 @@ class _BottomBarState extends State<BottomBar> {
               inactiveColor: Colors.black),
           BottomNavyBarItem(
               title: Text(
-                'Feed',
+                'All Items',
                 style: TextStyle(color: Colors.orange),
               ),
               icon: Icon(MyIcon.Feed),
