@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttershop/BottomNavigation.dart';
+import 'package:fluttershop/provider/cartprovider.dart';
+import 'package:fluttershop/provider/favourite.dart';
 import 'package:fluttershop/provider/feedScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +13,8 @@ class productdetail extends StatelessWidget {
   Widget build(BuildContext context) {
     final feederprovider = Provider.of<feedProvider>(context, listen: false);
     String ExtendPage = ModalRoute.of(context)!.settings.arguments as String;
+    final cartproviderScreen = Provider.of<cartprovider>(context);
+    final favproviderScreen = Provider.of<favprovider>(context);
     List ExtendList = feederprovider.findByID(ExtendPage);
     return Scaffold(
       backgroundColor: Colors.white,
@@ -18,6 +22,36 @@ class productdetail extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: Container(
+              height: 30,
+              width: 40,
+              child: IconButton(
+                  onPressed: () {
+                    favproviderScreen.addProductToCart(
+                        ExtendList[0].id,
+                        ExtendList[0].price,
+                        ExtendList[0].name,
+                        ExtendList[0].imageurl);
+                  },
+                  icon: favproviderScreen.favitem.containsKey(ExtendList[0].id)
+                      ? Icon(
+                          Icons.favorite,
+                          color: Colors.red,
+                        )
+                      : Icon(
+                          Icons.favorite_border_rounded,
+                          color: Colors.black,
+                        )),
+              decoration: BoxDecoration(
+                color: Colors.grey.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(16),
+              ),
+            ),
+          ),
+        ],
         leading: BackButton(
           color: Colors.black,
         ),
@@ -198,12 +232,27 @@ class productdetail extends StatelessWidget {
                       border: Border.all(color: Colors.white, width: 2),
                     ),
                     child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.card_travel,
-                        color: Colors.black,
-                      ),
-                    ),
+                        onPressed: cartproviderScreen.cartitem
+                                .containsKey(ExtendList[0].id)
+                            ? null
+                            : () {
+                                cartproviderScreen.addProductToCart(
+                                    ExtendList[0].id,
+                                    ExtendList[0].price,
+                                    ExtendList[0].name,
+                                    ExtendList[0].imageurl);
+                              },
+                        icon: cartproviderScreen.cartitem
+                                .containsKey(ExtendList[0].id)
+                            ? Icon(
+                                Icons.done,
+                                color: Colors.green,
+                                size: 29,
+                              )
+                            : Icon(
+                                Icons.card_travel,
+                                color: Colors.black,
+                              )),
                   ),
                 ],
               ),

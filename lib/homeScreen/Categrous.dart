@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class category extends StatelessWidget {
   List _categrios = [
+    'All',
     'Shoes',
     'Cloths',
     'Beauty',

@@ -97,4 +97,17 @@ class feedProvider with ChangeNotifier {
         .toList();
     return _IDList;
   }
+
+  List searchText(String search) {
+    List _searchList;
+    if (search.length == 0) {
+      return _feeditems;
+    } else {
+      _searchList = _feeditems
+          .where((element) =>
+              element.productcategoryname.toLowerCase().contains(search))
+          .toList();
+      return _searchList;
+    }
+  }
 }

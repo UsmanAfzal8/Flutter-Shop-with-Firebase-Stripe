@@ -33,56 +33,58 @@ class _BottomBarState extends State<BottomBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _pages[_selectedIndex],
-      bottomNavigationBar: BottomNavyBar(
-        backgroundColor: Colors.transparent,
-        curve: Curves.ease,
-        showElevation: false,
-        selectedIndex: _selectedIndex,
-        onItemSelected: _selectPage,
-        items: <BottomNavyBarItem>[
-          BottomNavyBarItem(
-              title: Text(
-                'Home',
-                style: TextStyle(color: Colors.orange),
-              ),
-              icon: Icon(MyIcon.home),
-              activeColor: Colors.orange.withOpacity(0.3),
-              inactiveColor: Colors.black),
-          BottomNavyBarItem(
-              title: Text(
-                'All Items',
-                style: TextStyle(color: Colors.orange),
-              ),
-              icon: Icon(MyIcon.Feed),
-              activeColor: Colors.orange.withOpacity(0.3),
-              inactiveColor: Colors.black),
-          BottomNavyBarItem(
-              title: Text(
-                'Search',
-                style: TextStyle(color: Colors.orange),
-              ),
-              icon: Icon(MyIcon.Search),
-              activeColor: Colors.orange.withOpacity(0.3),
-              inactiveColor: Colors.black),
-          BottomNavyBarItem(
-              title: Text(
-                'Cart',
-                style: TextStyle(color: Colors.orange),
-              ),
-              icon: Icon(MyIcon.Cart),
-              activeColor: Colors.orange.withOpacity(0.3),
-              inactiveColor: Colors.black),
-          BottomNavyBarItem(
-              title: Text(
-                'User',
-                style: TextStyle(color: Colors.orange),
-              ),
-              icon: Icon(MyIcon.User),
-              activeColor: Colors.orange.withOpacity(0.3),
-              inactiveColor: Colors.black),
-        ],
+    return Material(
+      child: Scaffold(
+        body: _pages[_selectedIndex],
+        bottomNavigationBar: BottomNavyBar(
+          backgroundColor: Colors.transparent,
+          curve: Curves.ease,
+          showElevation: false,
+          selectedIndex: _selectedIndex,
+          onItemSelected: _selectPage,
+          items: <BottomNavyBarItem>[
+            BottomNavyBarItem(
+                title: Text(
+                  'Home',
+                  style: TextStyle(color: Colors.orange),
+                ),
+                icon: Icon(MyIcon.home),
+                activeColor: Colors.orange.withOpacity(0.3),
+                inactiveColor: Colors.black),
+            BottomNavyBarItem(
+                title: Text(
+                  'All Items',
+                  style: TextStyle(color: Colors.orange),
+                ),
+                icon: Icon(MyIcon.Feed),
+                activeColor: Colors.orange.withOpacity(0.3),
+                inactiveColor: Colors.black),
+            BottomNavyBarItem(
+                title: Text(
+                  'Favourite',
+                  style: TextStyle(color: Colors.orange),
+                ),
+                icon: Icon(Icons.favorite_border_rounded),
+                activeColor: Colors.orange.withOpacity(0.3),
+                inactiveColor: Colors.black),
+            BottomNavyBarItem(
+                title: Text(
+                  'Cart',
+                  style: TextStyle(color: Colors.orange),
+                ),
+                icon: Icon(MyIcon.Cart),
+                activeColor: Colors.orange.withOpacity(0.3),
+                inactiveColor: Colors.black),
+            BottomNavyBarItem(
+                title: Text(
+                  'User',
+                  style: TextStyle(color: Colors.orange),
+                ),
+                icon: Icon(MyIcon.User),
+                activeColor: Colors.orange.withOpacity(0.3),
+                inactiveColor: Colors.black),
+          ],
+        ),
       ),
     );
   }

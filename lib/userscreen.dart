@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fluttershop/const/Icon.dart';
@@ -12,6 +13,7 @@ class Userscreen extends StatefulWidget {
 class _UserscreenState extends State<Userscreen> {
   bool _value = false;
   late ScrollController _scrollController;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   var top = 0.0;
   @override
   void initState() {
@@ -100,7 +102,20 @@ class _UserscreenState extends State<Userscreen> {
                               switchActiveColor: Colors.black,
                               title: Text('Dark'),
                             ),
-                            userListTile(4, context),
+                            InkWell(
+                              onTap: () {
+                                // _auth.signOut();
+                                Navigator.of(context).pop('/Loginscreen');
+                              },
+                              splashColor: Theme.of(context).splashColor,
+                              child: ListTile(
+                                onTap: () {
+                                  _auth.signOut();
+                                },
+                                leading: Icon(MyIcon.logout),
+                                title: Text('Logout'),
+                              ),
+                            ),
                           ],
                         ),
                       ),

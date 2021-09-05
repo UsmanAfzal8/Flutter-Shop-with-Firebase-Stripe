@@ -24,10 +24,12 @@ class EmptyScreen extends StatelessWidget {
           height: 30,
         ),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed('/feedScreen');
+          },
           child: Text('Shop Now'),
           style: ElevatedButton.styleFrom(
-            primary: Colors.blue,
+            primary: Colors.orange,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16.0),
             ),
