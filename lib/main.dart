@@ -16,6 +16,7 @@ import 'feedsScreen/categoryfeedScreen.dart';
 import 'homeScreen/topviewedfullScreen.dart';
 import 'loginsignupscreen/loginScreen.dart';
 import 'loginsignupscreen/signupscree.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -53,7 +54,24 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: userstate(),
+      // home: AnimatedSplashScreen(
+      //   splash: Container(
+      //     height: 200,
+      //     width: 200,
+      //     child: Image(
+      //       image: AssetImage('assets/logo.png'),
+      //     ),
+      //   ),
+      //   curve: Curves.easeInCirc,
+      //   nextScreen: userstate(),
+      //   splashTransition: SplashTransition.fadeTransition,
+      //   backgroundColor: Colors.orange.withOpacity(0.3),
+      //   duration: 5000,
+      // ),
+
+      //home: userstate(),
+      home: BottomBar(),
+
       routes: {
         '/Loginscreen': (context) => loginScreenui(),
         '/BottomBar': (context) => BottomBar(),

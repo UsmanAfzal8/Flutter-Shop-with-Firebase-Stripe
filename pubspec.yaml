@@ -38,10 +38,18 @@ dependencies:
   firebase_auth: ^3.1.0
   firebase_core: ^1.6.0
   google_sign_in: ^5.1.0
+  animated_splash_screen: ^1.1.0
+ 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  flutter_native_splash: ^1.2.1
+flutter_native_splash:
+  image: assets/logo.png
+  color: "#F4BA9A"
+  android: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
